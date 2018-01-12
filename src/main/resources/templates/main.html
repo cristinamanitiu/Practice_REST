@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+<script src="addController.js"></script>
+<script src="getController.js"></script>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main page</title>
+</head>
+<body>
+<div ng-app="app">
+    Name: <input type="text" ng-model="name"/><br/>
+    Author: <input type="text" ng-model="author"/><br/>
+    <button type="button" ng-controller="addBook">Add {{name}}</button>
+    <button type="button" ng-controller="getBook">Display</button>
+<br/><br/>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
