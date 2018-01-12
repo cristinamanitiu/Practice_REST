@@ -20,7 +20,7 @@ public class BookService {
         return bookList;
     }
 
-    public void addBook(Book b){
+    public static void addBook(Book b){
         b.setId(counter.incrementAndGet());
         bookList.add(b);
     }
@@ -32,4 +32,5 @@ public class BookService {
         bookList.add(new Book(counter.incrementAndGet(),"Book3","Auth3"));
         return bookList;
     }
+
 }
