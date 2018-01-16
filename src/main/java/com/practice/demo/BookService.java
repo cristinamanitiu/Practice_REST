@@ -1,6 +1,7 @@
 package com.practice.demo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -23,6 +24,29 @@ public class BookService {
     public static void addBook(Book b){
         b.setId(counter.incrementAndGet());
         bookList.add(b);
+    }
+
+    public static void deleteBook(long id){
+        Iterator<Book> it = bookList.iterator();
+        while(it.hasNext()){
+            Book b = it.next();
+            if(b.getId() == id){
+                bookList.remove(b);
+            }
+        }
+    }
+
+    public static void updateBook(long id, String auth, String titl){
+        Iterator<Book> it = bookList.iterator();
+        while(it.hasNext()){
+            Book b = it.next();
+            if(b.getId() == id){
+                if(auth != null)
+                    b.setAuthor(auth);
+                if(titl != null)
+                    b.setTitle(titl);
+            }
+        }
     }
 
     private static List<Book> setDefaultBooks(){

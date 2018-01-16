@@ -3,6 +3,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
 <script src="addController.js"></script>
 <script src="getController.js"></script>
+<script src="deleteController.js"></script>
+<script src="updateController.js"></script>
 <head>
     <meta charset="UTF-8"/>
     <title>Main page</title>
@@ -10,29 +12,37 @@
 <body>
 <div ng-app="MyFirstApp">
     <div ng-controller="addBook">
-    Name: <input type="text" ng-model="name"/><br/>
-    Author: <input type="text" ng-model="author"/><br/>
-    <button type="button" ng-click="addOneBook()">Add</button>
+        Name: <input type="text" ng-model="name"/><br/>
+        Author: <input type="text" ng-model="author"/><br/>
+        <button type="button" ng-click="addOneBook()">Add</button>
     </div>
     <div ng-controller="getBook">
-    <button type="button" ng-click="getAllBooks()">Display</button>
-    <br/><br/>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Author</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="u in bookList">
-                <td><span ng-bind="u.id"></span></td>
-                <td><span ng-bind="u.title"></span></td>
-                <td><span ng-bind="u.author"></span></td>
-            </tr>
-            </tbody>
-        </table>
+        <button type="button" ng-click="getAllBooks()">Display</button>
+        <div ng-controller="delete">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th width="20%"></th>
+                </tr>
+                </thead>
+                <div ng-controller="update">
+                <tbody>
+                <tr ng-repeat="u in bookList">
+                    <td><span ng-bind="u.id"></span></td>
+                    <td><span ng-bind="u.title"></span></td>
+                    <td><span ng-bind="u.author"></span></td>
+                        <td>
+                            <button type="button" ng-click="deleteBook(u.id)">Delete</button>
+                            <button type="button" ng-click="updateBook(u.id)">Update</button>
+                        </td>
+                </tr>
+                </tbody>
+                </div>
+            </table>
+        </div>
     </div>
 </div>
 </body>

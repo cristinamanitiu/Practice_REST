@@ -1,13 +1,21 @@
 var test=angular.module('MyFirstApp',[]);
 
-test.controller('addBook', function($http,$scope){
+test.factory('Book', function () {
+    var book = {}
+});
+
+test.controller('addBook', function($http,$scope,$rootScope){
     $scope.link = 'http://localhost:8080/books';
     $scope.addOneBook= function() {
-        var dataObj = {
-            title : $scope.name,
-            author : $scope.author
+        var data = {
+            "id":0,
+            "title":$scope.name,
+            "author":$scope.author
         };
-        var result = $http.post($scope.link,dataObj);
+        $rootScope.name=$scope.name;
+        $rootScope.author=$scope.author;
+      // var parameter = JSON.parse(dataObj);
+        var result = $http.post($scope.link,data);
         result.success(function(data, status, headers, config){
             $scope.message = data;
         });

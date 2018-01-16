@@ -3,16 +3,23 @@ package com.practice.demo;
 /**
  * Created by cristina.manitiu on 1/12/2018.
  */
+
 public class Book {
     private long id;
     private String title;
     private String author;
 
+    public Book(){
+
+    }
+
     public Book(long id,String title, String author){
+        System.out.println("Constructor with params");
         this.id=id;
         this.title=title;
         this.author=author;
     }
+
 
     public long getId(){
         return id;
