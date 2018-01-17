@@ -4,9 +4,9 @@ updVar.controller('update', ['firstBookService', '$scope', '$http' ,function(fir
     $scope.link = 'http://localhost:8080/books';
     
     $scope.updateBook= function(id) {
-        var bookObject = firstBookService.getParams();
-        var theTitle = bookObject.name;
-        var theAuthor = bookObject.author;
+       // var bookObject = firstBookService.getParams();
+        var theTitle = $scope.name;
+        var theAuthor = $scope.author;
         var fullLink = $scope.link + "/" + id + "?title=" + theTitle + "&author=" + theAuthor;
         var result = $http.put(fullLink);
         result.success(function(data, status, headers, config){

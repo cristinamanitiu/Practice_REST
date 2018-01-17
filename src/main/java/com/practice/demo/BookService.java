@@ -50,7 +50,7 @@ public class BookService {
     }
 
     private static List<Book> setDefaultBooks(){
-        List<Book> bookList = new ArrayList<Book>();
+        List<Book> bookList = new ArrayList<>();
         bookList.add(new Book(counter.incrementAndGet(),"Book1","Auth1"));
         bookList.add(new Book(counter.incrementAndGet(),"Book2","Auth2"));
         bookList.add(new Book(counter.incrementAndGet(),"Book3","Auth3"));

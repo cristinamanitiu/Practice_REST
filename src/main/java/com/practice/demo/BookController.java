@@ -30,6 +30,7 @@ public class BookController {
     @RequestMapping (value="/books/{id}", method=RequestMethod.PUT)
     public void editBook(@PathVariable ("id") long id, @RequestParam (value="author") String auth,
                          @RequestParam (value="title") String titl){
+        System.out.println("edit Book function");
         BookService.updateBook(id,auth,titl);
     }
 }

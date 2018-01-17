@@ -12,16 +12,16 @@
 </head>
 <body>
 <div ng-app="MyFirstApp">
-    <div ng-controller="addBook">
+    <div ng-controller="update">
         Name: <input type="text" ng-model="name"/><br/>
         Author: <input type="text" ng-model="author"/><br/>
-        <button type="button" ng-click="addOneBook()">Add</button>
-    </div>
-    <div ng-controller="getBook">
-        <button type="button" ng-click="getAllBooks()">Display</button>
-        <div ng-controller="delete">
-            <table>
-                <div ng-controller="update">
+        <div ng-controller="addBook">
+            <button type="button" ng-click="addOneBook()">Add</button>
+        </div>
+        <div ng-controller="getBook">
+            <button type="button" ng-click="getAllBooks()">Display</button>
+            <div ng-controller="delete">
+                <table>
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -41,8 +41,8 @@
                         </td>
                     </tr>
                     </tbody>
-                </div>
-            </table>
+                </table>
+            </div>
         </div>
     </div>
 </div>
