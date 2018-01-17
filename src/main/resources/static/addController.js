@@ -1,20 +1,16 @@
-var test=angular.module('MyFirstApp',[]);
+var test=angular.module('MyFirstApp',['MyFirstService']);
 
-test.factory('Book', function () {
-    var book = {}
-});
-
-test.controller('addBook', function($http,$scope,$rootScope){
+test.controller('addBook', ['firstBookService', '$scope', '$http', function(firstBookService,$scope,$http){
+    
     $scope.link = 'http://localhost:8080/books';
+    firstBookService.setParams($scope.name,$scope.author);
+
     $scope.addOneBook= function() {
         var data = {
             "id":0,
             "title":$scope.name,
             "author":$scope.author
         };
-        $rootScope.name=$scope.name;
-        $rootScope.author=$scope.author;
-      // var parameter = JSON.parse(dataObj);
         var result = $http.post($scope.link,data);
         result.success(function(data, status, headers, config){
             $scope.message = data;
@@ -25,4 +21,4 @@ test.controller('addBook', function($http,$scope,$rootScope){
     }
     $scope.name="";
     $scope.author="";
-});
+}]);

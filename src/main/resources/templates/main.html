@@ -2,6 +2,7 @@
 <html lang="en">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
 <script src="addController.js"></script>
+<script src="BookService.js"></script>
 <script src="getController.js"></script>
 <script src="deleteController.js"></script>
 <script src="updateController.js"></script>
@@ -20,26 +21,26 @@
         <button type="button" ng-click="getAllBooks()">Display</button>
         <div ng-controller="delete">
             <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th width="20%"></th>
-                </tr>
-                </thead>
                 <div ng-controller="update">
-                <tbody>
-                <tr ng-repeat="u in bookList">
-                    <td><span ng-bind="u.id"></span></td>
-                    <td><span ng-bind="u.title"></span></td>
-                    <td><span ng-bind="u.author"></span></td>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th width="20%"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="u in bookList">
+                        <td><span ng-bind="u.id"></span></td>
+                        <td><span ng-bind="u.title"></span></td>
+                        <td><span ng-bind="u.author"></span></td>
                         <td>
                             <button type="button" ng-click="deleteBook(u.id)">Delete</button>
                             <button type="button" ng-click="updateBook(u.id)">Update</button>
                         </td>
-                </tr>
-                </tbody>
+                    </tr>
+                    </tbody>
                 </div>
             </table>
         </div>
