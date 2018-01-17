@@ -1,7 +1,7 @@
 var tst=angular.module('MyFirstService',[]);
 
 tst.service('firstBookService', function(){
-    var bookObj ={id:null, title: "", author:""};
+    var bookObj ={id:null, title: "Poezii", author:"Eminescu"};
 
     function setParams(title,author){
         bookObj.title=title;

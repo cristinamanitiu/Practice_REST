@@ -17,6 +17,7 @@
         Author: <input type="text" ng-model="author"/><br/>
         <div ng-controller="addBook">
             <button type="button" ng-click="addOneBook()">Add</button>
+            <button type="button" ng-click="addWithService()">Add with service</button>
         </div>
         <div ng-controller="getBook">
             <button type="button" ng-click="getAllBooks()">Display</button>
@@ -38,6 +39,7 @@
                         <td>
                             <button type="button" ng-click="deleteBook(u.id)">Delete</button>
                             <button type="button" ng-click="updateBook(u.id)">Update</button>
+                            <button type="button" ng-click="updateWithService(u.id)">Update with Service</button>
                         </td>
                     </tr>
                     </tbody>
