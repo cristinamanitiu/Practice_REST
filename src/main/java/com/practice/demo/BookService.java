@@ -31,7 +31,7 @@ public class BookService {
         while(it.hasNext()){
             Book b = it.next();
             if(b.getId() == id){
-                bookList.remove(b);
+                it.remove();
             }
         }
     }
