@@ -1,8 +1,12 @@
 package com.practice.demo;
 
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -12,6 +16,7 @@ public class BookService {
     private static final AtomicLong counter = new AtomicLong();
 
     private static List<Book> bookList;
+    private static ExecutorService executor = Executors.newFixedThreadPool(10);
 
     static {
         bookList = setDefaultBooks();
@@ -47,6 +52,29 @@ public class BookService {
                     b.setTitle(titl);
             }
         }
+    }
+
+    public static CompletableFuture<String> getPromise(long id){
+        CompletableFuture<String> cf = new CompletableFuture<>();
+        executor.submit(() -> {
+            try{
+                cf.complete(getBookNameById(id));
+            }catch(NullPointerException e){
+                cf.completeExceptionally(e);
+            }
+        });
+        return cf;
+    }
+
+    public static String getBookNameById(long id) throws NullPointerException{
+        Iterator<Book> it = bookList.iterator();
+        while(it.hasNext()){
+            Book b = it.next();
+            if (b.getId() == id){
+                return b.getTitle();
+            }
+        }
+        return "Not found";
     }
 
     private static List<Book> setDefaultBooks(){

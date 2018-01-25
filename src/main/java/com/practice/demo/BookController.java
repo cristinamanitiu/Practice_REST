@@ -1,10 +1,13 @@
 package com.practice.demo;
 
 import org.springframework.web.bind.annotation.*;
+import sun.plugin.com.event.COMEventHandler;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.lang.String;
 
-import static com.practice.demo.BookService.*;
+import static com.practice.demo.BookService.getAllBooks;
 
 /**
  * Created by cristina.manitiu on 1/12/2018.
@@ -14,6 +17,15 @@ public class BookController {
 
     @RequestMapping(value="/books", method= RequestMethod.GET)
     public List<Book> returnBookList(){
+        CompletableFuture<String> cf1 = BookService.getPromise(1);
+        CompletableFuture<String> cf2 = BookService.getPromise(2);
+
+      //  CompletableFuture<String> combined = cf1.thenCombine(cf2, (a,b) -> "first : " + a + " second : " + b);
+     //   String finalValue = combined.join();
+        cf2.acceptEither(cf1, s -> {
+            System.out.println("Result = " + s);});
+        //System.out.println("Our value is = " +  finalValue);
+
         return getAllBooks();
     }
 
